@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>errors prohibited this book from being saved:
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+         </ul>
+      <% end %> 
+    <h1>User info</h1>
+    <%= form_with model:@user do |f| %>
+      <%= f.label :Name %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :Image %><br>
+      <%= f.file_field :image, accept: "image/*" %><br>
+      <%= f.label :Introduction %><br>
+      <%= f.text_field :introduction %><br>
+      <div class="actions">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
